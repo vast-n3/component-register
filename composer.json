@@ -22,7 +22,7 @@
   "extra": {
     "installer-paths": {
       "./frame/{$name}": [
-        "neoan3-frame/vastn3"
+        "vast-n3/vastn3"
       ],
       "./model/{$name}": [
         "neoan3-model/user"
