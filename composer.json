@@ -1,19 +1,29 @@
 {
-    "name": "vast-n3/register",
-    "description": "Basic user registration",
-    "minimum-stability": "dev",
-    "require": {
-        "mnsami/composer-custom-directory-installer": "1.1.*",
-        "neoan3-frame/vastn3": "dev-master"
-    },
-    "license": "GPL-3.0-only",
-    "extra": {
-        "installer-paths": {
-            "./frame/{$name}": [
-                "neoan3-frame/vastn3"
-            ],
-            "./model/{$name}": [],
-            "./component/{$name}": []
-        }
+  "name": "vast-n3/register",
+  "description": "Basic user registration",
+  "minimum-stability": "dev",
+  "require": {
+    "mnsami/composer-custom-directory-installer": "1.1.*",
+    "phpmailer/phpmailer": "~6.1",
+    "neoan3-model/user": "dev-master",
+    "neoan3-frame/vastn3": "dev-master"
+  },
+  "license": "GPL-3.0-only",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/sroehrl/neoan3-userModel.git"
     }
+  ],
+  "extra": {
+    "installer-paths": {
+      "./frame/{$name}": [
+        "neoan3-frame/vastn3"
+      ],
+      "./model/{$name}": [
+        "neoan3-model/user"
+      ],
+      "./component/{$name}": []
+    }
+  }
 }
