@@ -1,0 +1,108 @@
+<div class="w-full ">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" v-on:submit.prevent="register">
+        <fieldset :disabled="busy">
+            <div class="input">
+                <label class="text-gray-700">
+                    Username
+                </label>
+                <div class="relative">
+                    <input type="text" aria-label="username" pattern="[a-zA-Z0-9-_@\.]{4,}" minlength="4" name="userName" required v-model="credentials.userName">
+                    <div class="absolute right-0 top-0 mt-1 p-1 vastn3-has-tooltip">
+
+                        <svg v-if="availableUser&&credentials.userName.length>3"
+                             class="h-6 w-6 fill-current text-success" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+
+                        </svg>
+
+                        <svg v-if="(!availableUser&&credentials.userName.length>0) ||
+                    (credentials.userName.length>0 && credentials.userName.length<4)"
+                             class="h-6 w-6 fill-current text-danger" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/>
+                        </svg>
+                        <div class="vastn3-tooltip right-0 top-12 p-2  bg-white rounded w-32 shadow-outline">
+                            <span v-if="availableUser" class="text-success">Name is available</span>
+                            <span v-if="!availableUser" class="text-danger">Name is not available</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="input">
+                <label>
+                    Email
+                </label>
+                <input aria-label="email" type="email" name="email" required v-model="credentials.emails[0].email">
+            </div>
+
+            <div class="input">
+                <label>
+                    Password (min 8 characters)
+                </label>
+                <input aria-label="password" minlength="8" name="password" autocomplete="new-password" required type="password"
+                       v-model="credentials.password.password">
+            </div>
+            <div class="input">
+                <label>
+                    Repeat Password
+                </label>
+                <div class="relative">
+                    <input aria-label="repeat password" minlength="8" autocomplete="new-password" required type="password"
+                           v-model="passwordRepeat">
+                    <div v-if="!passwordMatch&&passwordRepeat.length>3" class="text-danger">Passwords
+                        do not match
+                    </div>
+                    <div class="absolute top-0 right-0 mt-1 p-1" v-if="passwordMatch">
+                        <svg
+                                class="h-6 w-6 fill-current text-success" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+            <div v-if="tacLink" class="mb-4">
+                <label class="relative pt-2">
+
+                    <input aria-label="accept terms and conditions" class="appearance-none rounded border-gray-600 border-2 w-4 h-4" type="checkbox" v-model="tac">
+                    <span class="text-sm text-gray-600">I accept the <a class="underline hover:text-primary" :href="tacLink" target="_blank">terms and conditions</a></span>
+                    <svg v-if="tac"
+                         class="h-6 w-6 fill-current text-success absolute top-0" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                </label>
+
+            </div>
+        </fieldset>
+        <div class="flex">
+            <button :disabled="!formValid||busy"
+                    class="text-primary bg-transparent border-primary focus:bg-primary focus:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                    type="submit">Register
+            </button>
+            <animation v-if="busy" class="ml-6"></animation>
+        </div>
+    </form>
+    <button @click="toggleModal">test</button>
+    <modal name="confirm-email">
+        <div class="p-4 bg-primary text-white">
+            Confirm your email
+        </div>
+        <div class="p-4">
+            We have just sent you an email to verify your account.
+            <div class="flex justify-end">
+                <button @click="toggleModal">OK</button>
+            </div>
+        </div>
+    </modal>
+</div>
+
+

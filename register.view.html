@@ -1,0 +1,27 @@
+<div class="container mx-auto md:w-2/3 py-4">
+    <div class="my-4 flex flex-wrap ">
+        <div class="w-full md:w-1/2 md:px-0 px-4">
+            <h2 id="register-headline" class="text-4xl text-teal-700">Register</h2>
+            <code class="bg-gray-800 text-white p-2">&ltregister>&lt/register></code>
+            <p class="my-4 text-gray-700">
+                Registers a user. Requires email component (verification is sent).
+            </p>
+            <table class="table-auto border border-collapse">
+                <tr>
+                    <th class="px-4 py-2">Prop</th>
+                    <th class="px-4 py-2">Type</th>
+                    <th class="px-4 py-2">Function</th>
+                </tr>
+                <tr>
+                    <td class="p-2 border">tac-link</td>
+                    <td class="p-2 border">String ('[url]', undefined)</td>
+                    <td class="p-2 border">If present, includes a required checkbox acknowledging the terms.</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="w-full md:w-1/2 flex md:px-0 px-4">
+            <register class="md:ml-8" tac-link="{{base}}legal"></register>
+        </div>
+    </div>
+</div>
