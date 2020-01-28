@@ -6,13 +6,17 @@
     "mnsami/composer-custom-directory-installer": "1.1.*",
     "phpmailer/phpmailer": "~6.1",
     "neoan3-model/user": "dev-master",
-    "neoan3-frame/vastn3": "dev-master"
+    "vast-n3/vastn3": "dev-master"
   },
   "license": "GPL-3.0-only",
   "repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/sroehrl/neoan3-userModel.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/vast-n3/vastn3.git"
     }
   ],
   "extra": {
